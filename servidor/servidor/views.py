@@ -10,17 +10,18 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            # Inicia sesión o redirige a otra página aquí
-            ...
+
     else:
         form = UserRegisterForm()
     return render(request, 'register.html', {'form': form})
 
 def index(request):
-    template_name="index.html"
-    productos=productos.objects.filter(activo=True)
-    context={"Productos":productos}
-    return render(request, template_name, context)
+    Products=Products.objects.filter(activo=True)
+    context={"Productos":Products}
+    return render(request, 'products/listado.html',context)
+
+
+
 
 
 

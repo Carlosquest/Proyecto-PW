@@ -3,29 +3,29 @@ from django.contrib.auth import get_user_model
 from django.db.models import F, Sum, FloatField
 from products.models import Product
 
-# Create your models here.
+User = get_user_model()
 
-User=get_user_model()
 
 class Order(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
-    completed=models.BooleanField(default=False)
-    created_at=models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     @property
     def total(self):
-        return self.orderline_set.aggregate()
-        total=sum(F("Product__price")*F("quantity"), output_field=FloatField())
-        ["total"]or FloatField(0)
+        return self.orderline_set.aggregate(
+            total=Sum(F("product__price") * F("quantity"), output_field=FloatField())
+        )["total"] or FloatField(0)
 
     def __str__(self):
         return self.id
 
     class Meta:
-        db_table='orders'
-        verbose_name='Pedido'
-        verbose_name_plural='Pedidos'
-        ordering=['id']
+        db_table = 'orders'
+        verbose_name = 'Pedido'
+        verbose_name_plural = 'Pedidos'
+        ordering = ['id']
+
 
 class OrderLine(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -34,7 +34,6 @@ class OrderLine(models.Model):
     quantity = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    
     def __str__(self):
         return f'{self.quantity} de {self.product.name}'
 

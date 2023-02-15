@@ -31,3 +31,24 @@ def process_order(request):
 
     messages.success(request, "El pedido se ha creado correctamente!")
     return redirect("listado_productos")
+
+
+class OrderList(ListView):
+     model = Order
+     ordering = ["id"]
+     template_name = "listado2.html"
+
+     def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+
+   
+
+class OrderDetail(DetailView):
+    model = Order
+    template_name = "detalle.html"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+

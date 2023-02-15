@@ -18,8 +18,12 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
+body{
+  background: #F3F3F3;
+}
+
 button {
-  background-color: #04AA6D;
+  background-color: #3D62BD;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -48,9 +52,7 @@ img.avatar {
   border-radius: 50%;
 }
 
-.container {
-  padding: 16px;
-}
+
 
 .contenedor{
     width: 50vw;
@@ -60,6 +62,9 @@ img.avatar {
 span.psw {
   float: right;
   padding-top: 16px;
+}
+footer {
+width: 100%;
 }
 
 /* Change styles for span and cancel button on extra small screens */
@@ -84,7 +89,7 @@ span.psw {
     {% csrf_token %}
     <div class="container">
         {% if form.errors %}
-        <p>Tu Correo electronico o Contraseña no coinciden, por favor intenta de nuevo</p>
+        <p>Tu usuario o Contraseña no coinciden, por favor intenta de nuevo</p>
         {% endif %}
 
         {% if next %}

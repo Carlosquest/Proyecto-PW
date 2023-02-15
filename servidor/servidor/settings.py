@@ -70,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
+
                 
             ],
         },
@@ -134,7 +136,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 #LOGIN CONFIGURATION
 
-LOGIN_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL='/productos'
 LOGOUT_REDIRECT_URL='/accounts/login'
 
 # Default primary key field type

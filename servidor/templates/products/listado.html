@@ -10,10 +10,11 @@
             <div class="row">
                 {% for category in products %}
                 <h3>{{category.0.name}} </h3>
+                <br> <br>
                 {% for product in category.1 %}
                     <div class="col-md-3 col-sm-12 col-lg-4">
-                        <div class="card" style="width: 100%">
-                            <img src="{{ product.image }}" style="width:100%;" class="card-img-top" alt="{{ product.name }}" />
+                        <div class="card" style="width: 80%; height: 100%">
+                            <img src="{{ product.image }}" style="width:65%;" class="card-img-top" alt="{{ product.name }}" />
                             <div class="card-body">
                                 <h5 class="card-title"> {{ product.name }}</h5>
                                 <p class="card-text">{{ product.price }}$</p>
@@ -28,6 +29,7 @@
                     {% endfor %}
                 {% endfor %}
             </div>
+            
         </div>
 
         <div class="col-3">

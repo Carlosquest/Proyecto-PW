@@ -18,14 +18,18 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-button {
-  background-color: #04AA6D;
+input[type=submit] {
+  background-color: #3D62BD;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
+}
+
+body{
+  background: #F3F3F3;
 }
 
 button:hover {
@@ -74,12 +78,15 @@ span.psw {
 }
 </style>
 </head>
-<h2>Registro de usuario</h2>
 
-<form method="post">
+<div class="contenedor"><form method="post">
+  <h2>Registro de usuario</h2>
   {% csrf_token %}
   {{ form.as_p }}
+  <p>Ya tiene cuenta? <a href="/accounts/login">inicie sesion</a></p>
+
   <input type="submit" value="Registrarse">
-</form>
+</form></div>
+
 {% endblock %}
 

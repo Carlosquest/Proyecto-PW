@@ -11,7 +11,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
 
-  <body class="gris ">
+  <body style="margin-left: 10vh;">
 
     <nav class="navbar navbar-expand-md blanco navbar-fixed-top">
   
@@ -28,15 +28,15 @@
           <ul class="nav nav-tabs" id="myTab" role="tablist">
   
             <li class="nav-item" role="presentation">
-              <button class="nav-link active text-dark " id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                type="button" role="tab" aria-controls="home" aria-selected="true">INICIO</button>
+              <a href="/productos" class="nav-link active text-dark " >  
+                INICIO</a>
+            
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-dark" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 CATEGORIAS
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#Pvendidos">Productos Mas Vendidos</a></li>
                 <li><a class="dropdown-item" href="#AseoP">Cuidado Personal </a></li>
                 <li><a class="dropdown-item" href="#Aseo">Aseo del Hogar</a></li>
                 <li><a class="dropdown-item" href="#FrutasyVerduras">Frutas y Verduras</a></li>
@@ -54,7 +54,7 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="miCuenta.html">MI CUENTA</a></li>
+                <li><a class="dropdown-item" href="{% url "order_list" %}">Mis Pedidos</a></li>
               </ul>
           </ul>
   

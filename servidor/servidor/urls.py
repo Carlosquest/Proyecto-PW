@@ -10,6 +10,8 @@ urlpatterns = [
     path('productos/', include('products.urls') ),
     path('carrito/', include('cart.urls') ),
     path('orders/', include('orders.urls') ),
+    path('', views.index, name='mi_vista'),
+
 
     
 

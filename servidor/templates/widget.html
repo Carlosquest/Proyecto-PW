@@ -1,3 +1,4 @@
+{% load cart_tags %}
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -30,8 +31,8 @@
                 >
                     -
                 </a>
-                Total {{ value.price}}
-                </td>
+                Total {{ value.price|multiply:value.quantity|money_format:"$" }}
+            </td>
             </tr>
         {% endfor %}
 
@@ -49,13 +50,13 @@
     <tfoot>
         <tr>
             <td colspan="3">
-                Total: {{ cart_total_amount}}$
+                Total: {{ cart_total_amount |money_format:"$" }}
             </td>
         </tr>
         {% if request.session.cart.items %}
             <tr>
                 <td colspan="3">
-                    <a href="{% url "process_order" %}" class="btn btn-success">Crear pedido</a>
+                    <a href="{% url 'process_order' %}" class="btn btn-success">Crear pedido</a>
                 </td>
             </tr>
         {% endif %}
